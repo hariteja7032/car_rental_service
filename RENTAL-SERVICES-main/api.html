@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+
+  <title>Mini Project</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <style>
+    body {
+      background-image: url(b2.png);
+      margin-top: 20%;
+      backdrop-filter: blur(3px);
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-size: 100%;
+    }
+
+
+    p {
+      font-size: 100;
+    }
+
+    button {
+      width: 200px;
+      padding: 15px 0;
+      text-align: center;
+      margin: 20px 10px;
+      border-radius: 25px;
+      font-weight: bold;
+      border: 2px solid black;
+      background: transparent;
+      color: black;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    span {
+      background: lightgray;
+      height: 100%;
+      width: 0;
+      border-radius: 25px;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      z-index: -1;
+      transition: 0.5s;
+    }
+
+    button:hover span {
+      width: 100%;
+      background-color: lightgray;
+    }
+
+    button:hover {
+      border: none;
+    }
+  </style>
+
+</head>
+
+<body>
+  <center>
+
+    <body>
+
+      <audio controls autoplay hidden>
+
+        <source src="ad.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+
+      <h1>Geolocation</h1>
+
+      <p>Click the button to get your coordinates.</p>
+
+      <button onclick="getLocation()">Click Here</button>
+
+      <p id="demo"></p>
+
+      <script>
+        const x = document.getElementById("demo");
+
+        function getLocation() {
+          try {
+            navigator.geolocation.getCurrentPosition(showPosition);
+          } catch {
+            x.innerHTML = err;
+          }
+        }
+
+        function showPosition(position) {
+          x.innerHTML = "Latitude: " + position.coords.latitude +
+            "<br>Longitude: " + position.coords.longitude;
+        }
+      </script>
+  </center>
+</body>
+
+</html>
